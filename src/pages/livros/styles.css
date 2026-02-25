@@ -1,0 +1,56 @@
+.titulo {
+    color: #646cffaa;
+}
+
+.container-select, .container-filter{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.container-select, .container-filter span {
+    font-size: 1.2rem;
+    color: #475569;
+}
+
+.container-busca {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.select-ordenacao, .input-filtro {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 8px;
+    border: 1px solid #f1f1f1;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.select-ordenacao:hover, .input-filtro:hover {
+    border-color: #646cff;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+}
+
+.input-filtro {
+    width: 800px;
+    flex: 1;
+}
+
+
+.livros-container {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(220px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+

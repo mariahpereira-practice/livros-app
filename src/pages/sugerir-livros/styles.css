@@ -1,0 +1,82 @@
+.sugerir-livros-container {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Segoe UI", sans-serif;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #646cffaa;
+    background-color: transparent;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.label-input {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.input-text{
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-text:focus {
+    border-color: #646cffaa;
+    border-width: 5px;
+}
+
+.input-text.input-error {
+    border-color: #ff4d4d;
+    border-width: 5px;
+}
+
+.error-message{
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.submit-btn{
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #646cffaa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #4b54e1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0;
+    transform: translateY(-5px) }
+    to { opacity: 1;
+    transform: translateY(0); }
+}
+
+
+

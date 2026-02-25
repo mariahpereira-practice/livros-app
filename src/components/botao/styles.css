@@ -1,0 +1,38 @@
+.botao {
+    background-color: inherit;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+    border: none;
+    color: white;
+}
+
+.botao:hover {
+    background-color: #6591e4;
+    border-color: #7aa0e7;
+}
+
+.primario {
+    background-color: #7aa0e7;
+    color: white;
+}
+
+.primario:hover {
+    background-color: white;
+    color: #7aa0e7;
+}
+
+.secundario {
+    background-color: white;
+    color: #7aa0e7;
+}
+
+.secundario:hover {
+    background-color: #7aa0e7;
+    color: white;
+}
+
+.terciario:hover {
+    border: none;
+}
