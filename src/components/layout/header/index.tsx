@@ -1,4 +1,4 @@
-import Botao from '../botao'
+import Botao from '../../botao'
 import './styles.css'
 
 export default function Header() {
