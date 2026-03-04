@@ -1,0 +1,126 @@
+.detalhar-livros {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn-voltar {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.btn-voltar:hover {
+    background-color: #4f46e5;
+}
+
+.livro-nao-encontrado {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.livro-nao-encontrado h1 {
+    color: #6366f1;
+    margin-bottom: 1rem;
+}
+
+.livro-nao-encontrado p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.livro-detalhes {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.livro-imagem {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.livro-imagem img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.livro-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.livro-titulo {
+    font-size: 2rem;
+    color: #1f2937;
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-item strong {
+    color: #6366f1;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-item span {
+    color: #374151;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.categoria-descricao {
+    font-style: italic;
+    color: #6b7280;
+    font-size: 1rem !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .detalhar-livros {
+        padding: 1rem;
+    }
+
+    .livro-detalhes {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .livro-imagem img {
+        max-width: 200px;
+    }
+
+    .livro-titulo {
+        font-size: 1.5rem;
+    }
+
+    .info-item span {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "titulo": "O Senhor dos Anéis",
+    "autor": "J.R.R. Tolkien",
+    "anoPublicacao": 1954,
+    "dataLeitura": "2025-12-14",
+    "linkImagem": "https://m.media-amazon.com/images/I/61N4u6ijSeL._AC_UL320_.jpg",
+    "categoria": 7
+  },
+  {
+    "id": 2,
+    "titulo": "O sonho de uma Apaixonada por Livros",
+    "autor": "Miya Kazuki",
+    "anoPublicacao": 2026,
+    "dataLeitura": "2026-01-14",
+    "linkImagem": "https://m.media-amazon.com/images/I/517q5v9Uh4L._SY445_SX342_ML2_.jpg",
+    "categoria": 9
+  },
+  {
+    "id": 3,
+    "titulo": "Katabasis",
+    "autor": "R.F.Kuang",
+    "anoPublicacao": 2025,
+    "dataLeitura": "2026-02-14",
+    "linkImagem": "https://m.media-amazon.com/images/I/916c3LpFtkL._SY466_.jpg",
+    "categoria": 7
+  },
+  {
+    "id": 4,
+    "titulo": "A vila dos Tecidos",
+    "autor": "Anne Jacobs",
+    "anoPublicacao": 2002,
+    "dataLeitura": "2026-03-14",
+    "linkImagem": "https://m.media-amazon.com/images/I/91TQximA69L._AC_UF1000,1000_QL80_.jpg",
+    "categoria": 5
+  }
+]

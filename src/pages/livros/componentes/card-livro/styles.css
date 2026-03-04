@@ -8,6 +8,7 @@
 	flex-direction: column;
 	gap: 0.5rem;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	height: 100%;
 }
 
 .card-livro:hover {
@@ -32,4 +33,20 @@
 	border-radius: 12px;
 	margin-top: 0.75rem;
 	object-fit: cover;
+}
+
+.botao-detalhes {
+	margin-top: auto;
+	padding: 0.5rem;
+	background-color: #646cffaa;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	
+}.botao-detalhes:hover {
+	background-color: #4b54e1;
 }

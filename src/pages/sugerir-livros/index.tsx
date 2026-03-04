@@ -1,26 +1,41 @@
 import { useState } from "react";
+import { useLivrosSugeridos } from "../../hooks/useLivrosSugeridos";
+import { UseCategorias } from "../../hooks/useCategorias";
 import './styles.css';
+import type { Category } from "../../types/livro";
 
 interface FormData {
     nomeLivro: string;
     autor: string;
-    genero: string;
+    categoria: number;
     anoPublicacao: string;
     sinopse: string;
     linkImagem: string;
 }
 
+interface FormErrors {
+    nomeLivro?: string;
+    autor?: string;
+    categoria?: string;
+    anoPublicacao?: string;
+    sinopse?: string;
+    linkImagem?: string;
+}
+
 interface FormState {
     values: FormData;
-    errors: Partial<FormData>;
+    errors: FormErrors;
 }
 
 export function SugerirLivros() {
+    const { saveLivroSugerido } = useLivrosSugeridos();
+    const categorias = UseCategorias();
+    
     const [form, setForm] = useState<FormState>({
         values: {
             nomeLivro: '',
             autor: '',
-            genero: '',
+            categoria: 0,
             anoPublicacao: '',
             sinopse: '',
             linkImagem: ''
@@ -44,11 +59,34 @@ export function SugerirLivros() {
         }));
     };
 
-    const handleSubmit = (event: React.SubmitEvent) => {
+    const handleChangeCategoria = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedId = Number(e.target.value);
+        
+        const messageErrorCategoria: string | undefined = selectedId === 0 ? 'Categoria é obrigatória' : undefined;
+
+        setForm((prevForm) => ({
+            ...prevForm,
+            values: {
+                ...prevForm.values,
+                categoria: selectedId
+            },
+            errors: {
+                ...prevForm.errors,
+                categoria: messageErrorCategoria
+            }
+        }));
+    };
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const { errors, values } = form;
         const hasErrors = Object.values(errors).some((error) => error !== undefined);
-        const hasEmptyFields = Object.values(values).some((value) => value === '');
+        const hasEmptyFields = values.nomeLivro === '' || 
+                               values.autor === '' || 
+                               values.categoria === 0 || 
+                               values.anoPublicacao === '' || 
+                               values.sinopse === '' || 
+                               values.linkImagem === '';
         
         if (hasEmptyFields) {
             alert('Por favor, preencha todos os campos antes de enviar o formulário.');
@@ -60,12 +98,24 @@ export function SugerirLivros() {
             return;
         }
         
-        console.log('Formulário enviado com sucesso:', form.values);
+        const novoLivro = {
+            id: Date.now(),
+            titulo: values.nomeLivro,
+            autor: values.autor,
+            anoPublicacao: Number(values.anoPublicacao),
+            dataLeitura: new Date().toISOString(),
+            linkImagem: values.linkImagem,
+            categoria: values.categoria
+        };
+
+        saveLivroSugerido(novoLivro);
+        alert('Livro sugerido com sucesso!');
+        
         setForm({
             values: {
                 nomeLivro: '',
                 autor: '',
-                genero: '',
+                categoria: 0,
                 anoPublicacao: '',
                 sinopse: '',
                 linkImagem: ''
@@ -86,9 +136,9 @@ export function SugerirLivros() {
                     return 'O nome do autor deve conter pelo menos 3 caracteres';
                 }
                 return undefined;
-            case 'genero': 
-                if( value.length > 0 && value.length < 3) {
-                    return 'O gênero deve conter pelo menos 3 caracteres';
+            case 'categoria':
+                if( !value) {
+                    return 'Por favor, selecione uma categoria';
                 }
                 return undefined;
             case 'anoPublicacao': 
@@ -142,17 +192,23 @@ export function SugerirLivros() {
                     {form.errors.autor && <span className="error-message">{form.errors.autor}</span>}
                 </div>
                 <div className="input-group">
-                    <label htmlFor="genero" className="label-input">Gênero:</label>
-                    <input 
-                        type="text" 
-                        id="genero" 
-                        name="genero"
-                        value={form.values.genero}
-                        onChange={handleChange}
+                    <label htmlFor="categoria" className="label-input">Categoria:</label>
+                    <select
+                        id="categoria" 
+                        name="categoria"
+                        value={form.values.categoria}
+                        onChange={handleChangeCategoria}
                         className={`input-text 
-                            ${form.errors.genero ? 'input-error' : ''}`}
-                    />
-                    {form.errors.genero && <span className="error-message">{form.errors.genero}</span>}
+                            ${form.errors.categoria ? 'input-error' : ''}`}
+                    >
+                        <option value={0}>Selecione uma categoria</option>
+                        {categorias.map((categoria: Category) => (
+                            <option key={categoria.id} value={categoria.id}>
+                                {categoria.titulo}
+                            </option>
+                        ))}
+                    </select>
+                    {form.errors.categoria && <span className="error-message">{form.errors.categoria}</span>}
                 </div>
                 <div className="input-group">
                     <label htmlFor="anoPublicacao" className="label-input">Ano de Publicação:</label>

@@ -1,4 +1,4 @@
-import ImagemCapa from '../../components/imagem-capa'
+import ImagemCapa from './componentes/imagem-capa'
 import './styles.css'
 
 function Home() {

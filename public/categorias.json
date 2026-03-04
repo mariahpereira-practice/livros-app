@@ -1,0 +1,46 @@
+[{
+    "id": 1,
+    "titulo": "Ficção",
+    "descricao": "Livros de ficção, incluindo fantasia, ficção científica, romance e outros gêneros imaginativos."
+},
+{
+    "id": 2,
+    "titulo": "Não-Ficção",
+    "descricao": "Livros de não-ficção, abrangendo biografias, memórias, livros de autoajuda, história e outros gêneros baseados em fatos."
+},
+{
+    "id": 3,
+    "titulo": "Clássicos",
+    "descricao": "Livros clássicos da literatura mundial, incluindo obras de autores renomados e influentes ao longo da história."
+},
+{
+    "id": 4,
+    "titulo": "Infanto Juvenil",
+    "descricao": "Livros destinados a crianças e jovens, incluindo literatura infantil, livros para adolescentes e séries populares entre os jovens leitores."
+},
+{
+    "id": 5,
+    "titulo": "Romance",
+    "descricao": "Livros de romance, abrangendo histórias de amor, relacionamentos e dramas românticos."
+},
+{
+    "id": 6,
+    "titulo": "Mistério/Thriller",
+    "descricao": "Livros de mistério e thriller, incluindo suspense, crime, investigação e histórias cheias de reviravoltas."
+},
+{
+    "id": 7,
+    "titulo": "Fantasia",
+    "descricao": "Livros de fantasia, com mundos imaginários, magia, criaturas fantásticas e aventuras épicas."
+},
+{
+    "id": 8,
+    "titulo": "Ficção Científica",
+    "descricao": "Livros de ficção científica, explorando temas como tecnologia avançada, viagens espaciais, inteligência artificial e futuros distópicos."
+},
+{
+    "id": 9,
+    "titulo": "Light Novel",
+    "descricao": "Novelas leves japonesas"
+}
+]
