@@ -1,7 +1,17 @@
 import { useParams, useNavigate } from "react-router";
 import { useLivros } from "../../hooks/useLivros";
 import { UseCategorias } from "../../hooks/useCategorias";
-import './styles.css';
+import { 
+    DetalharLivrosContainer, 
+    BtnVoltar, 
+    LivroNaoEncontrado, 
+    LivroDetalhes, 
+    LivroImagem, 
+    LivroInfo, 
+    LivroTitulo, 
+    InfoItem, 
+    CategoriaDescricao 
+} from './style';
 
 export function DetalharLivros() {
     const { id } = useParams<{ id: string }>();
@@ -13,15 +23,15 @@ export function DetalharLivros() {
     
     if (!livro) {
         return (
-            <div className="detalhar-livros">
-                <div className="livro-nao-encontrado">
+            <DetalharLivrosContainer>
+                <LivroNaoEncontrado>
                     <h1>Livro não encontrado</h1>
                     <p>O livro que você procura não existe ou foi removido.</p>
-                    <button onClick={() => navigate('/livros')} className="btn-voltar">
+                    <BtnVoltar onClick={() => navigate('/livros')}>
                         Voltar para Livros
-                    </button>
-                </div>
-            </div>
+                    </BtnVoltar>
+                </LivroNaoEncontrado>
+            </DetalharLivrosContainer>
         );
     }
     
@@ -33,49 +43,49 @@ export function DetalharLivros() {
     });
     
     return (
-        <div className="detalhar-livros">            
-            <div className="livro-detalhes">
+        <DetalharLivrosContainer>            
+            <LivroDetalhes>
                 {livro.linkImagem && (
-                    <div className="livro-imagem">
+                    <LivroImagem>
                         <img src={livro.linkImagem} alt={livro.titulo} />
-                    </div>
+                    </LivroImagem>
                 )}
                 
-                <div className="livro-info">
-                    <h1 className="livro-titulo">{livro.titulo}</h1>
+                <LivroInfo>
+                    <LivroTitulo>{livro.titulo}</LivroTitulo>
                     
-                    <div className="info-item">
+                    <InfoItem>
                         <strong>Autor:</strong>
                         <span>{livro.autor}</span>
-                    </div>
+                    </InfoItem>
                     
-                    <div className="info-item">
+                    <InfoItem>
                         <strong>Ano de Publicação:</strong>
                         <span>{livro.anoPublicacao}</span>
-                    </div>
+                    </InfoItem>
                     
-                    <div className="info-item">
+                    <InfoItem>
                         <strong>Categoria:</strong>
                         <span>{categoria ? categoria.titulo : 'Não categorizado'}</span>
-                    </div>
+                    </InfoItem>
                     
                     {categoria?.descricao && (
-                        <div className="info-item">
+                        <InfoItem>
                             <strong>Sobre a Categoria:</strong>
-                            <span className="categoria-descricao">{categoria.descricao}</span>
-                        </div>
+                            <CategoriaDescricao>{categoria.descricao}</CategoriaDescricao>
+                        </InfoItem>
                     )}
                     
-                    <div className="info-item">
+                    <InfoItem>
                         <strong>Data de Leitura:</strong>
                         <span>{dataFormatada}</span>
-                    </div>
+                    </InfoItem>
                 
-                </div>
-                <button onClick={() => navigate('/livros')} className="btn-voltar">
+                </LivroInfo>
+                <BtnVoltar onClick={() => navigate('/livros')}>
                 Voltar
-            </button>
-            </div>
-        </div>
+            </BtnVoltar>
+            </LivroDetalhes>
+        </DetalharLivrosContainer>
     )
 }

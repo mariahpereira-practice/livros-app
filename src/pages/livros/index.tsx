@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useLivros } from '../../hooks/useLivros';
-import { CardLivro } from './componentes/card-livro';
-import './styles.css'
+import { CardLivroStyled } from './componentes/card-livro-styled';
+import { Container, Titulo, ContainerBusca, ContainerSelect, ContainerFilter, SelectOrdenacao, InputFiltro, LivrosContainer } from './style';
 
 export function Livros() {
   const { livros } = useLivros();
@@ -26,13 +26,12 @@ export function Livros() {
   }, [livros, ordenacao, filtroTitulo]);
 
   return (
-    <main>
-      <h1 className='titulo'>Livros</h1>
-      <div className='container-busca'>
-        <div className='container-select'>
+    <Container>
+      <Titulo>Livros</Titulo>
+      <ContainerBusca>
+        <ContainerSelect>
           <span>Ordenar por:</span>
-          <select
-            className='select-ordenacao'
+          <SelectOrdenacao
             value={ordenacao}
             onChange={(e) => {
               const valor = e.target.value as 'id' | 'titulo' | 'dataLeitura'
@@ -42,25 +41,24 @@ export function Livros() {
             <option value="id">Selecione...</option>
             <option value="titulo">Título</option>
             <option value="dataLeitura">Data de Leitura (Mais Recente)</option>
-          </select>
-        </div>
-        <div className='container-filter'>
+          </SelectOrdenacao>
+        </ContainerSelect>
+        <ContainerFilter>
           <span>Filtrar:</span>
-          <input
-            className='input-filtro'
+          <InputFiltro
             type="text"
             placeholder='Digite o título do livro'
             value={filtroTitulo}
             onChange={(e) => setFiltroTitulo(e.target.value)}
           />
-        </div>
-      </div>
+        </ContainerFilter>
+      </ContainerBusca>
       
-      <div className='livros-container'>
+      <LivrosContainer>
         {listaOrdenada.map(livro => (
-          <CardLivro key={livro.id} livro={livro} />
+          <CardLivroStyled key={livro.id} livro={livro} />
         ))}
-      </div>
-    </main>
+      </LivrosContainer>
+    </Container>
   )
 }

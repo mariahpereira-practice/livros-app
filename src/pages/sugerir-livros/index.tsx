@@ -1,8 +1,18 @@
 import { useState } from "react";
 import { useLivrosSugeridos } from "../../hooks/useLivrosSugeridos";
 import { UseCategorias } from "../../hooks/useCategorias";
-import './styles.css';
 import type { Category } from "../../types/livro";
+import { 
+    SugerirLivrosContainer, 
+    Title, 
+    FormContainer, 
+    InputGroup, 
+    LabelInput, 
+    InputText, 
+    SelectInput, 
+    ErrorMessage, 
+    SubmitBtn 
+} from './style';
 
 interface FormData {
     nomeLivro: string;
@@ -162,44 +172,41 @@ export function SugerirLivros() {
     };
 
     return (
-        <main className="sugerir-livros-container">
-            <h2 className="title">Sugestão de Livros</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="input-group">
-                    <label htmlFor="nomeLivro" className="label-input">Nome do Livro:</label>
-                    <input 
+        <SugerirLivrosContainer>
+            <Title>Sugestão de Livros</Title>
+            <FormContainer onSubmit={handleSubmit}>
+                <InputGroup>
+                    <LabelInput htmlFor="nomeLivro">Nome do Livro:</LabelInput>
+                    <InputText 
                         type="text" 
                         id="nomeLivro" 
                         name="nomeLivro"
                         value={form.values.nomeLivro}
                         onChange={handleChange}
-                        className={`input-text 
-                            ${form.errors.nomeLivro ? 'input-error' : ''}`}
+                        hasError={!!form.errors.nomeLivro}
                     />
-                    {form.errors.nomeLivro && <span className="error-message">{form.errors.nomeLivro}</span>}
-                </div>
-                <div className="input-group">
-                    <label htmlFor="autor" className="label-input">Autor:</label>
-                    <input 
+                    {form.errors.nomeLivro && <ErrorMessage>{form.errors.nomeLivro}</ErrorMessage>}
+                </InputGroup>
+                <InputGroup>
+                    <LabelInput htmlFor="autor">Autor:</LabelInput>
+                    <InputText 
                         type="text" 
                         id="autor" 
                         name="autor"
                         value={form.values.autor}
                         onChange={handleChange}
-                        className={`input-text 
-                            ${form.errors.autor ? 'input-error' : ''}`}
+                        hasError={!!form.errors.autor}
                     />
-                    {form.errors.autor && <span className="error-message">{form.errors.autor}</span>}
-                </div>
-                <div className="input-group">
-                    <label htmlFor="categoria" className="label-input">Categoria:</label>
-                    <select
+                    {form.errors.autor && <ErrorMessage>{form.errors.autor}</ErrorMessage>}
+                </InputGroup>
+                <InputGroup>
+                    <LabelInput htmlFor="categoria">Categoria:</LabelInput>
+                    <SelectInput
                         id="categoria" 
                         name="categoria"
                         value={form.values.categoria}
                         onChange={handleChangeCategoria}
-                        className={`input-text 
-                            ${form.errors.categoria ? 'input-error' : ''}`}
+                        hasError={!!form.errors.categoria}
                     >
                         <option value={0}>Selecione uma categoria</option>
                         {categorias.map((categoria: Category) => (
@@ -207,50 +214,47 @@ export function SugerirLivros() {
                                 {categoria.titulo}
                             </option>
                         ))}
-                    </select>
-                    {form.errors.categoria && <span className="error-message">{form.errors.categoria}</span>}
-                </div>
-                <div className="input-group">
-                    <label htmlFor="anoPublicacao" className="label-input">Ano de Publicação:</label>
-                    <input 
+                    </SelectInput>
+                    {form.errors.categoria && <ErrorMessage>{form.errors.categoria}</ErrorMessage>}
+                </InputGroup>
+                <InputGroup>
+                    <LabelInput htmlFor="anoPublicacao">Ano de Publicação:</LabelInput>
+                    <InputText 
                         type="text" 
                         id="anoPublicacao" 
                         name="anoPublicacao"
                         value={form.values.anoPublicacao}
                         onChange={handleChange}
-                        className={`input-text 
-                            ${form.errors.anoPublicacao ? 'input-error' : ''}`}
+                        hasError={!!form.errors.anoPublicacao}
                     />
-                    {form.errors.anoPublicacao && <span className="error-message">{form.errors.anoPublicacao}</span>}
-                </div>
-                <div className="input-group">
-                    <label htmlFor="sinopse" className="label-input">Sinopse:</label>
-                    <input 
+                    {form.errors.anoPublicacao && <ErrorMessage>{form.errors.anoPublicacao}</ErrorMessage>}
+                </InputGroup>
+                <InputGroup>
+                    <LabelInput htmlFor="sinopse">Sinopse:</LabelInput>
+                    <InputText 
                         type="text" 
                         id="sinopse" 
                         name="sinopse"
                         value={form.values.sinopse}
                         onChange={handleChange}
-                        className={`input-text 
-                            ${form.errors.sinopse ? 'input-error' : ''}`}
+                        hasError={!!form.errors.sinopse}
                     />
-                    {form.errors.sinopse && <span className="error-message">{form.errors.sinopse}</span>}
-                </div>
-                <div className="input-group">
-                    <label htmlFor="linkImagem" className="label-input">Link da Imagem:</label>
-                    <input 
+                    {form.errors.sinopse && <ErrorMessage>{form.errors.sinopse}</ErrorMessage>}
+                </InputGroup>
+                <InputGroup>
+                    <LabelInput htmlFor="linkImagem">Link da Imagem:</LabelInput>
+                    <InputText 
                         type="text" 
                         id="linkImagem" 
                         name="linkImagem"
                         value={form.values.linkImagem}
                         onChange={handleChange}
-                        className={`input-text 
-                            ${form.errors.linkImagem ? 'input-error' : ''}`}
+                        hasError={!!form.errors.linkImagem}
                     />
-                    {form.errors.linkImagem && <span className="error-message">{form.errors.linkImagem}</span>}
-                </div>
-                <button type="submit" className="submit-btn">Sugerir</button>
-            </form>
-        </main>
+                    {form.errors.linkImagem && <ErrorMessage>{form.errors.linkImagem}</ErrorMessage>}
+                </InputGroup>
+                <SubmitBtn type="submit">Sugerir</SubmitBtn>
+            </FormContainer>
+        </SugerirLivrosContainer>
     )
 }
